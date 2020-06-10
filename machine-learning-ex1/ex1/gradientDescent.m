@@ -18,21 +18,16 @@ for iter = 1:num_iters
     %
     
     %method 1
-%     Inner=(X*theta - y);
-%     tmp1 = theta(1) - alpha * 1.0/m * sum(transpose(Inner)*X(:,1));
-%     tmp2 = theta(2) - alpha * 1.0/m * sum(Inner.*X(:,2));
-%     
-%     theta(1)=tmp1;
-%     theta(2)=tmp2;
+    %     Inner=(X*theta - y);
+    %     tmp1 = theta(1) - alpha * 1.0/m * sum(transpose(Inner)*X(:,1));
+    %     tmp2 = theta(2) - alpha * 1.0/m * sum(Inner.*X(:,2));
+    %     
+    %     theta(1)=tmp1;
+    %     theta(2)=tmp2;
     
     %method 2
     Inner=(X*theta - y);
-    tmp_theta=[]
-    for it = 1:size(theta),
-        tmp_theta= theta - alpha * 1.0/m * transpose(X)*Inner;
-    end;
-    theta=tmp_theta;
-        
+    theta= theta - alpha * 1.0/m * transpose(X)*Inner;
 
 
 

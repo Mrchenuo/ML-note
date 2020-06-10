@@ -26,10 +26,31 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+% method 1
 
+% mu=mean(X);
+% sigma=std(X);
 
+% for i=1:size(X,1),
+%     X_norm(i)=(X_norm(i)-mu)/sigma;
+% end;
+% X_norm = (X-mu)./sigma;
 
+%method 2
 
+n = length(X(1,:));
+for i=1:n
+    tmp = std(X(:,i));
+    miu = mean(X(:,i));
+    X(:,i) = (X(:,i) - miu) / tmp;
+    
+    mmu(1,i) = miu;
+    ssigma(1, i) = tmp;
+end
+
+X_norm = X;
+mu = mmu;
+sigma = ssigma;
 
 
 

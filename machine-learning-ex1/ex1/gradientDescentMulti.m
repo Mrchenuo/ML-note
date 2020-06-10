@@ -16,14 +16,24 @@ for iter = 1:num_iters
     % Hint: While debugging, it can be useful to print out the values
     %       of the cost function (computeCostMulti) and gradient here.
     %
+    
+%     theta= theta - alpha * 1.0/m * X' * (X * theta - y);
 
 
-
-
-
-
-
-
+    tmp = theta;
+    feature_dim = length(X(1,:));
+    for i = 1: feature_dim
+        k = 1;
+        sum = 0;
+      
+        while( k <= m )
+            sum = sum + ((theta)' * (X(k,:))' - y(k)) * X(k, i);
+            k = k + 1;
+        end
+        tmp(i) = tmp(i) - alpha * sum / m;
+    end
+    
+    theta = tmp;
 
 
 
