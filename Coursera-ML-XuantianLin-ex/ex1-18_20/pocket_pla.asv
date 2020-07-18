@@ -1,5 +1,6 @@
 function pocketW =  pocket_pla(X,y,pocketW,W,iteration)
 
+
 [rows,~] = size(X);
 index = 1;
 it = 1;
@@ -15,7 +16,7 @@ while it <= iteration
     if res == 0
         res = -1;
     end
-    
+
     if res ~= y(index)
         W = W + y(index,:) * X(index,:)';%amendment
         if errorRate(X,y,pocketW) > errorRate(X,y,W)
@@ -24,7 +25,7 @@ while it <= iteration
         end
         it = it + 1;
     end
-    
+
     index = index+1;
     if index== rows + 1 %To prevent cross-border
         index = 1;
